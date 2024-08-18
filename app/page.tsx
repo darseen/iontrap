@@ -1,7 +1,9 @@
+import Loop from "@/components/loop";
+
 export default function Home() {
   return (
-    <main>
-      <div></div>
+    <main className="flex min-h-screen flex-col items-center justify-center py-2">
+      <Loop />
     </main>
   );
 }
