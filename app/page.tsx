@@ -1,13 +1,23 @@
-import Card from "@/components/card";
+import LinkButton from "@/components/link-button";
+import Loop from "@/components/loop";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start space-y-40 p-4">
-      <section className="grid grid-cols-1 gap-20 md:grid-cols-3">
-        {Array.from({ length: 100 }).map((_, i) => (
-          <Card key={i} />
-        ))}
-      </section>
+    <main className="h-screen">
+      <div className="mt-20 flex flex-col items-center gap-8">
+        <Loop width={100} height={100} className="mt-10" />
+        <div className="flex items-center gap-2 text-white">
+          <span className="text-base">Disconnected.</span>
+          <span className="text-base">Lost.</span>
+          <span className="text-base">Irrelevant.</span>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <LinkButton href="/posts" className="">
+            Posts
+          </LinkButton>
+        </div>
+      </div>
     </main>
   );
 }

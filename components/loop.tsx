@@ -1,14 +1,20 @@
 import loopImage from "@/assets/images/loop.png";
 import Image from "next/image";
 
-export default function Loop() {
+interface Props {
+  width: number;
+  height: number;
+  className?: string;
+}
+
+export default function Loop({ width, height, className }: Props) {
   return (
     <Image
       src={loopImage}
       alt="loop"
-      width={40}
-      height={40}
-      className="animate-spin-slow"
+      width={width}
+      height={height}
+      className={`animate-spin-slow ${className}`}
     />
   );
 }
