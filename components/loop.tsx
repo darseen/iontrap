@@ -14,7 +14,7 @@ export default function Loop({ width, height, className }: Props) {
       alt="loop"
       width={width}
       height={height}
-      className={`animate-spin-slow ${className}`}
+      className={`animate-[spin_2s_linear_infinite] ${className}`}
     />
   );
 }
