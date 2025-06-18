@@ -1,0 +1,72 @@
+services:
+  # Next.js Service
+  nextjs:
+    image: darseen/iontrap:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - private
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: ./app
+          ignore:
+            - node_modules
+        - action: rebuild
+          path: package.json
+
+  # Postgres Service
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      - POSTGRES_USER=nextjs
+      - POSTGRES_DB=iontrap
+      - POSTGRES_PASSWORD_FILE=/run/secrets/pg_password
+    secrets:
+      - pg_password
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - private
+
+  # Redis Service
+  redis:
+    image: redis:8-alpine
+    networks:
+      - private
+    volumes:
+      - redis:/data
+    environment:
+      - REDIS_PASSWORD_FILE=/run/secrets/redis_password
+    command: sh -c 'redis-server --requirepass "$$(cat /run/secrets/redis_password)"'
+    secrets:
+      - redis_password
+
+# Config
+
+secrets:
+  pg_password:
+    file: ./secrets/pg-password.txt
+  redis_password:
+    file: ./secrets/redis-password.txt
+
+volumes:
+  postgres:
+  redis:
+
+networks:
+  private:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/19
+          gateway: 10.0.0.1

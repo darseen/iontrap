@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Loop from "../../loop";
-import LoginLink from "./login-link";
+import SignInLink from "./sing-in-link";
 
 export default function Header() {
   return (
@@ -20,7 +20,7 @@ export default function Header() {
         <Link href="/about" className="underline">
           About
         </Link>
-        <LoginLink />
+        <SignInLink />
       </div>
     </header>
   );

@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const { data, error } = await getPosts();
-
   if (error) throw new Error(error.message);
 
   return (

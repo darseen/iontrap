@@ -13,9 +13,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-4">
-          <LinkButton href="/posts" className="">
-            Posts
-          </LinkButton>
+          <LinkButton href="/posts">Posts</LinkButton>
         </div>
       </div>
     </main>

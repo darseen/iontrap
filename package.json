@@ -9,31 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.49.8",
-    "@tailwindcss/postcss": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.10",
     "@vercel/analytics": "^1.5.0",
     "dotenv": "^16.5.0",
-    "drizzle-orm": "^0.43.1",
-    "next": "15.3.2",
-    "postgres": "^3.4.7",
+    "drizzle-orm": "^0.44.2",
+    "ioredis": "^5.6.1",
+    "next": "15.3.3",
+    "pg": "^8.16.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "zod": "^3.25.32"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@types/node": "^22.15.21",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^24.0.3",
+    "@types/pg": "^8.15.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "drizzle-kit": "^0.31.1",
-    "eslint": "^9.27.0",
+    "eslint": "^9.29.0",
     "eslint-config-next": "15.4.0-canary.51",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.5",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.7",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac"
 }

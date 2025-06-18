@@ -10,7 +10,6 @@ export async function getPosts() {
       .select()
       .from(postsTable)
       .orderBy(desc(postsTable.createdAt));
-
     return { data: { posts }, error: null };
   } catch (error) {
     console.log("get posts error: ", error);
