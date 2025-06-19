@@ -16,8 +16,6 @@ export default async function signIn(signInata: SignInData) {
   });
   const { data, error } = await result.json();
 
-  console.log(data, error);
-
   if (error) return { error, data: null };
 
   sessionManager.update(data.session as Session);

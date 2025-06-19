@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import SessionProvider from "@/lib/auth/client/session-provider";
@@ -24,7 +23,6 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <Analytics />
         </SessionProvider>
       </body>
     </html>

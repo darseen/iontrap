@@ -53,8 +53,9 @@ export async function setCookie(
   cookieStore: ReadonlyRequestCookies,
 ) {
   cookieStore.set("session-id", sessionId, {
+    path: "/",
     httpOnly: true,
-    secure: true,
+    secure: false, // TODO: change to true when you have a proper SSL cert
     sameSite: "lax",
     expires: new Date(Date.now() + EXPIRATION_TIME * 1000),
   });

@@ -1,19 +1,41 @@
 services:
+  # Nginx Service
+  nginx:
+    image: nginx:1.27.5-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - public
+    depends_on:
+      nextjs:
+        condition: service_healthy
+    restart: always
+
   # Next.js Service
   nextjs:
     image: darseen/iontrap:latest
     build:
       context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - 3000:3000
+      dockerfile: Dockerfile.prod
     env_file:
       - ./.env
-    depends_on:
-      - postgres
-      - redis
     networks:
+      - public
       - private
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 5s
+      retries: 5
+      start_period: 15s
+      timeout: 5s
     develop:
       watch:
         - action: sync
@@ -37,6 +59,12 @@ services:
       - postgres:/var/lib/postgresql/data
     networks:
       - private
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nextjs -d iontrap"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # Redis Service
   redis:
@@ -50,6 +78,16 @@ services:
     command: sh -c 'redis-server --requirepass "$$(cat /run/secrets/redis_password)"'
     secrets:
       - redis_password
+    restart: always
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "redis-cli -a $$(cat /run/secrets/redis_password) ping | grep PONG",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 # Config
 
@@ -64,6 +102,8 @@ volumes:
   redis:
 
 networks:
+  public:
+
   private:
     driver: bridge
     ipam:

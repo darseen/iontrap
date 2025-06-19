@@ -34,8 +34,6 @@ export default function SessionProvider({ children }: Props) {
         });
         const { data, error } = await result.json();
 
-        console.log("initial fetch", data, error);
-
         if (!error) setSession(data.session as Session);
       } finally {
         setPending(false);

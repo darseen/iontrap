@@ -7,8 +7,6 @@ import Link from "next/link";
 export default function SignInLink() {
   const { session } = useSession();
 
-  console.log(session);
-
   return (
     <>
       {!session ? (
