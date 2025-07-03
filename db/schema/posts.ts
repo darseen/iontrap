@@ -7,7 +7,7 @@ export const postsTable = pgTable("posts", {
   userId: uuid("user_id").notNull(),
   title: varchar("title", { length: 50 }).notNull(),
   description: text("description").notNull(),
-  imageUrl: text("image_url").notNull(),
+  imagePath: text("image_path").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

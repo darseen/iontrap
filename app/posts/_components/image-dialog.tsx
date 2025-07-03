@@ -6,10 +6,10 @@ import Image from "next/image";
 
 interface Props {
   dialogRef: RefObject<HTMLDialogElement | null>;
-  imageUrl: string;
+  imagePath: string;
 }
 
-export default function ImageDialog({ imageUrl, dialogRef }: Props) {
+export default function ImageDialog({ imagePath, dialogRef }: Props) {
   return (
     <dialog
       ref={dialogRef}
@@ -18,7 +18,7 @@ export default function ImageDialog({ imageUrl, dialogRef }: Props) {
       <section className="flex h-full w-full flex-col items-center justify-center gap-2 p-5">
         <div className="max-w-4xl">
           <Image
-            src={imageUrl}
+            src={imagePath}
             alt="image preview"
             width={0}
             height={0}

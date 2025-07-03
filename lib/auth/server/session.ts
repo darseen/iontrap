@@ -24,7 +24,7 @@ export async function getUser(cookieStore: ReadonlyRequestCookies) {
 }
 
 export async function getSession(cookieStore: ReadonlyRequestCookies) {
-  const sessionId = cookieStore.get("session-id");
+  const sessionId = cookieStore.get("session-id")?.value;
   if (!sessionId) return null;
 
   const session = await redisClient.get(`session:${sessionId}`);

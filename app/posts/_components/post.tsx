@@ -20,7 +20,7 @@ export default function Post({ post }: Props) {
       >
         <div className="rounded-lg">
           <Image
-            src={post.imageUrl}
+            src={post.imagePath}
             alt={post.title}
             width={0}
             height={0}
@@ -42,7 +42,7 @@ export default function Post({ post }: Props) {
         </div>
       </div>
 
-      <ImageDialog dialogRef={dialogRef} imageUrl={post.imageUrl} />
+      <ImageDialog dialogRef={dialogRef} imagePath={post.imagePath} />
     </>
   );
 }

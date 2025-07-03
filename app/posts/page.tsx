@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "Posts page",
 };
 
+export const revalidate = 60;
+
 export default async function Page() {
   const { data, error } = await getPosts();
   // if (error) throw new Error(error.message);
